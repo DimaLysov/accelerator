@@ -1,0 +1,78 @@
+.mainpage-root {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 32px;
+}
+.mainpage-calendar {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(79,110,247,0.06);
+  padding: 24px 32px;
+  min-width: 340px;
+}
+.mainpage-calendar-header {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mainpage-calendar-arrow {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #4f6ef7;
+  font-weight: 700;
+  padding: 0 8px;
+}
+.mainpage-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 8px;
+}
+.mainpage-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.mainpage-day {
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.2s, color 0.2s;
+}
+.mainpage-day-selected {
+  background: #4f6ef7;
+  color: #fff;
+}
+.mainpage-events {
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(79,110,247,0.06);
+  padding: 24px 32px;
+}
+.mainpage-events-header {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.mainpage-events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mainpage-event-item {
+  background: #f5f7ff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(79,110,247,0.04);
+}
