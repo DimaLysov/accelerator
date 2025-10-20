@@ -1,78 +1,33 @@
-.mainpage-root {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-  margin-top: 32px;
-}
-.mainpage-calendar {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(79,110,247,0.06);
-  padding: 24px 32px;
-  min-width: 340px;
-}
-.mainpage-calendar-header {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.mainpage-calendar-arrow {
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  color: #4f6ef7;
-  font-weight: 700;
-  padding: 0 8px;
-}
-.mainpage-weekdays {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  font-weight: 600;
-  color: #888;
-  margin-bottom: 8px;
-}
-.mainpage-days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-}
-.mainpage-day {
-  text-align: center;
-  padding: 8px 0;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background 0.2s, color 0.2s;
-}
-.mainpage-day-selected {
-  background: #4f6ef7;
-  color: #fff;
-}
-.mainpage-events {
-  flex: 1;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(79,110,247,0.06);
-  padding: 24px 32px;
-}
-.mainpage-events-header {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-.mainpage-events-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.mainpage-event-item {
-  background: #f5f7ff;
-  border-radius: 12px;
-  padding: 16px 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 1px 4px rgba(79,110,247,0.04);
-}
+.mainpage-card { background: var(--color-card-dark); border-radius: 56px; margin: -120px auto 48px; max-width: 1100px; padding: 48px 64px; box-shadow: var(--shadow-md); }
+.mainpage-card-inner { display:flex; gap:48px; align-items:flex-start; }
+.mainpage-calendar { width: 340px; background: transparent; padding: 0; }
+.mainpage-calendar-header { color: var(--color-on-dark); display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.mainpage-calendar-arrow { background:none; border:none; color: var(--color-on-dark); font-size:20px; }
+.mainpage-weekdays { display:grid; grid-template-columns: repeat(7, 1fr); color: rgba(255,255,255,0.6); margin-bottom:8px; }
+.mainpage-days { display:grid; grid-template-columns: repeat(7, 1fr); gap:10px; }
+.mainpage-day { text-align:center; padding:12px 0; border-radius:8px; cursor:pointer; font-size:18px; background: rgba(255,255,255,0.04); color:var(--color-on-dark); }
+.mainpage-day-selected { background: var(--color-accent); color:#001; box-shadow: 0 8px 28px rgba(0,0,0,0.6); }
+.mainpage-events { flex:1; color:var(--color-on-dark); }
+.mainpage-events-header { font-size:20px; font-weight:700; margin-bottom:16px; }
+.mainpage-events-list { list-style:none; padding:0; margin:0; }
+.mainpage-event-item { background: rgba(255,255,255,0.02); border-radius:12px; padding:16px 20px; margin-bottom:16px; }
+
+@media (max-width:900px) { .mainpage-card { margin-top:-80px; padding:28px; border-radius:28px; } .mainpage-card-inner { flex-direction:column; align-items:center; } .mainpage-calendar { width:100%; max-width:360px; } }
+
+/* New calendar box inside the card */
+.mainpage-calendar-box { background: rgba(0,0,0,0.12); padding: 18px; border-radius: 12px; display:inline-block; }
+.mainpage-days .day-tile { width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:8px; font-weight:600; }
+.mainpage-days .day-tile.inactive { background: rgba(255,255,255,0.02); color: rgba(255,255,255,0.45); }
+.mainpage-days .day-tile.active { background: var(--color-accent); color: #001; box-shadow: 0 8px 24px rgba(0,0,0,0.6); }
+
+/* Event row layout */
+.event-row { display:flex; gap:24px; align-items:flex-start; }
+.event-date { width: 160px; }
+.event-date .date-compact { font-weight:700; font-size:16px; margin-bottom:8px; }
+.event-time { font-weight:700; text-align:right; color:var(--color-on-dark); }
+.event-body { flex:1; }
+.event-name { font-weight:700; font-size:16px; margin-bottom:6px; }
+.event-location { color: var(--color-muted); font-size:14px; }
+
+/* Make tiles centered */
+.mainpage-days div { display:flex; align-items:center; justify-content:center; }

@@ -1,0 +1,19 @@
+/* Global styles, reset and base typography */
+@import './theme.css';
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--color-on-dark);
+  background: var(--color-bg);
+}
+
+/* Utility container */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+/* Basic button reset */
+button { font-family: inherit; }
+

@@ -1,10 +1,10 @@
-
-
 import React, { useEffect, useState } from 'react';
 import { getEventsByDate } from '../api/event';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import '../pages/styles/mainpage.css';
 import '../pages/styles/mainpage-calendar.css';
+// import Header from '../components/Header';
+import Hero from '../components/Hero';
 
 
 function formatDate(date) {
@@ -59,66 +59,52 @@ const MainPage = () => {
   }, [calendarMonth]);
 
   return (
-    <div style={{ padding: 24 }}>
-      <div className="mainpage-hero">
-        <div className="mainpage-hero-title">
-          <span role="img" aria-label="icon" style={{ fontSize: 32 }}>🏟️</span>
-          Объекты спорта города
-        </div>
-        <div className="mainpage-hero-stats">
-          <div>
-            <div className="mainpage-hero-stat">100 000</div>
-            <div className="mainpage-hero-stat-label">Спортивных сооружений</div>
+    <div>
+      <Hero subtitle="Это универсальная цифровая платформа для всех, кто интересуется спортом в нашем городе. Мы объединяем на интерактивной карте все спортивные объекты, собираем и календарим все предстоящие мероприятия и помогаем найти команду, тренировки или площадку." />
+      <div className="mainpage-page">
+        <div className="mainpage-container">
+          <div className="mainpage-card">
+            <div className="mainpage-card-inner">
+              <div className="mainpage-calendar">
+            <div className="mainpage-calendar-header">
+              <button className="mainpage-calendar-arrow" onClick={handlePrevMonth}>&lt;</button>
+              <span>{calendarMonth.toLocaleString('ru-RU', { month: 'long', year: 'numeric' })}</span>
+              <button className="mainpage-calendar-arrow" onClick={handleNextMonth}>&gt;</button>
+            </div>
+            <div className="mainpage-weekdays">
+              {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d => <div key={d}>{d}</div>)}
+            </div>
+            <div className="mainpage-days">
+              {Array((firstDay + 6) % 7).fill(null).map((_, i) => <div key={'empty'+i}></div>)}
+              {days.map(day => {
+                const isSelected = day === selectedDate.getDate() && calendarMonth.getMonth() === selectedDate.getMonth() && calendarMonth.getFullYear() === selectedDate.getFullYear();
+                const cls = `day-tile ${isSelected ? 'active' : 'inactive'}`;
+                return (
+                  <div key={day} className={cls} onClick={() => handleDayClick(day)}>{day}</div>
+                );
+              })}
+            </div>
           </div>
-          <div>
-            <div className="mainpage-hero-stat" style={{ fontSize: 28 }}>50 000</div>
-            <div className="mainpage-hero-stat-label">Включено в реестр</div>
-          </div>
-        </div>
-        <Link to="/map" className="mainpage-hero-btn">
-          Смотреть на карте
-        </Link>
-      </div>
-      <div className="mainpage-root">
-        <div className="mainpage-calendar">
-          <div className="mainpage-calendar-header">
-            <button className="mainpage-calendar-arrow" onClick={handlePrevMonth}>&lt;</button>
-            <span>{calendarMonth.toLocaleString('ru-RU', { month: 'long', year: 'numeric' })}</span>
-            <button className="mainpage-calendar-arrow" onClick={handleNextMonth}>&gt;</button>
-          </div>
-          <div className="mainpage-weekdays">
-            {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d => <div key={d}>{d}</div>)}
-          </div>
-          <div className="mainpage-days">
-            {Array((firstDay + 6) % 7).fill(null).map((_, i) => <div key={'empty'+i}></div>)}
-            {days.map(day => (
-              <div
-                key={day}
-                className={day === selectedDate.getDate() && calendarMonth.getMonth() === selectedDate.getMonth() && calendarMonth.getFullYear() === selectedDate.getFullYear() ? 'mainpage-day mainpage-day-selected' : 'mainpage-day'}
-                onClick={() => handleDayClick(day)}
-              >
-                {day}
-              </div>
-            ))}
-          </div>
-        </div>
         <div className="mainpage-events">
-          <div className="mainpage-events-header">
-            События за {formatDate(selectedDate)}
+            <div className="mainpage-events-header">
+              События за {formatDate(selectedDate)}
+            </div>
+            {loading ? <div>Загрузка...</div> : error ? <div>Ошибка: {error}</div> : (
+              <ul className="mainpage-events-list">
+                {events.length === 0 && <li>Нет событий</li>}
+                {events.map(event => (
+                  <li key={event.id} className="mainpage-event-item">
+                    <b>{new Date(event.start_date).toLocaleDateString()} — {new Date(event.end_date).toLocaleDateString()}</b><br/>
+                    <span>{event.name}</span><br/>
+                    {event.location && <span>📍 {event.location}<br/></span>}
+                    {event.description && <span>{event.description}<br/></span>}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-          {loading ? <div>Загрузка...</div> : error ? <div>Ошибка: {error}</div> : (
-            <ul className="mainpage-events-list">
-              {events.length === 0 && <li>Нет событий</li>}
-              {events.map(event => (
-                <li key={event.id} className="mainpage-event-item">
-                  <b>{new Date(event.start_date).toLocaleDateString()} — {new Date(event.end_date).toLocaleDateString()}</b><br/>
-                  <span>{event.name}</span><br/>
-                  {event.location && <span>📍 {event.location}<br/></span>}
-                  {event.description && <span>{event.description}<br/></span>}
-                </li>
-              ))}
-            </ul>
-          )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

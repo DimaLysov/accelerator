@@ -4,7 +4,7 @@ from api.models import Sport
 
 
 class Invitation(models.Model):
-    sport = models.ForeignKey(Sport, verbose_name='Вид спорта', on_delete=models.PROTECT)
+    sport = models.ManyToManyField(Sport, verbose_name='Вид спорта', related_name='sports_invitation')
     name = models.CharField('Название', max_length=100)
     description = models.TextField('Описание', blank=True, default='')
     location = models.TextField('Местоположение', blank=True, default='')

@@ -1,0 +1,7 @@
+.site-header { background: transparent; position: absolute; top: 0; left: 0; width: 100%; z-index: 60; padding: 18px 0; }
+.header-inner { display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; padding: 0 16px; }
+.logo-link { color: var(--color-on-dark); text-decoration: none; font-weight: 800; font-size: 22px; }
+.header-nav a { color: rgba(255,255,255,0.95); text-decoration:none; margin: 0 12px; padding:8px 14px; border-radius:8px; background: rgba(255,255,255,0.04); }
+.header-nav a:hover { background: rgba(255,255,255,0.08); }
+.header-actions .btn-ghost { background: #fff; color: var(--color-primary); border: none; padding:6px 12px; border-radius:8px; cursor:pointer; }
+@media (max-width: 768px) { .header-nav { display:none; } }

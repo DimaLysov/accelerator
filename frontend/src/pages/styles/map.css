@@ -1,0 +1,14 @@
+.map-page { padding: 48px 16px; min-height: 70vh; }
+.map-container-wrap { max-width: 1100px; margin: 0 auto; }
+.map-filters { display:flex; gap:16px; margin-bottom:16px; align-items:center; flex-wrap: wrap; }
+.select { background: rgba(255,255,255,0.06); color: var(--color-on-dark); border: 1px solid rgba(255,255,255,0.04); padding:8px 12px; border-radius:8px; min-width: 220px; max-width: 520px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Make the search input flexible so it can take remaining space */
+.map-filters input.select { min-width: 200px; flex: 1 1 300px; }
+.select option { color: #0b0b0b; background: #fff; }
+/* Attempt to normalize native select appearance across browsers */
+.select { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+.select::-ms-expand { display: none; }
+.map-box { background: #fff; border-radius:16px; padding:12px; box-shadow: var(--shadow-sm); }
+.map-popup { background: #071218; color: #fff; padding: 16px; border-radius: 8px; }
+.map-popup h3 { margin:0 0 8px; font-size:16px; }
+.map-top-actions { max-width:1100px; margin: 0 auto 16px; }

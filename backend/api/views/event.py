@@ -6,13 +6,17 @@ from django.utils import timezone
 from datetime import datetime
 
 from api.models import Event
-from api.serializers.event import EventSerializer
+from api.serializers.event import EventSerializer, EventListSerializer
 
 
 @extend_schema(tags=['Event'])
 class EventViewSet(ModelViewSet):
-    serializer_class = EventSerializer
     queryset = Event.objects.all()
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return EventListSerializer
+        return EventSerializer
 
     @action(detail=False, methods=['get'])
     def by_date(self, request):
