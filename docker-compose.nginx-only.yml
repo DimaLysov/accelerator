@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+  nginx_temp:
+    image: nginx:latest
+    container_name: accelerator_nginx_temp
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/temp_default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+    restart: unless-stopped
+
+  certbot_temp:
+    image: certbot/certbot
+    container_name: accelerator_certbot_temp
+    volumes:
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+    # No automatic command: we'll run certbot manually via `docker compose run`
+    restart: "no"
