@@ -34,14 +34,14 @@ const MapPage = ({ cityObjects = [], sports = [], objectTypes = [] }) => {
         <h2 style={{ textAlign:'center', color:'var(--color-on-dark)', marginBottom: 16 }}>Карта спортивных объектов города Иваново</h2>
         <div className="map-filters">
           <select className="select" value={selectedTypeId} onChange={e => setSelectedTypeId(e.target.value)}>
-            <option value="">Тип объекта</option>
+            <option value="">Все типы объектов</option>
             {objectTypes.map(t => (
               <option key={t.id} value={t.id}>{t.name}</option>
             ))}
           </select>
 
           <select className="select" value={selectedSportId} onChange={e => setSelectedSportId(e.target.value)}>
-            <option value="">Вид спорта</option>
+            <option value="">Все виды спорта</option>
             {sports.map(s => (
               <option key={s.id} value={s.id}>{s.name}</option>
             ))}

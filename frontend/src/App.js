@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import MainPage from './pages/MainPage';
 import MapPageWrapper from './pages/MapPageWrapper';
-import AllEventsPage from './pages/AllEventsPage';
+import ProfessionalEventsPage from './pages/ProfessionalEventsPage';
+import CustomEventsPage from './pages/CustomEventsPage';
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
           <Route path="map" element={<MapPageWrapper />} />
-          <Route path="events" element={<AllEventsPage />} />
+          <Route path="events/professional" element={<ProfessionalEventsPage />} />
+          <Route path="events/custom" element={<CustomEventsPage />} />
         </Route>
       </Routes>
     </Router>
